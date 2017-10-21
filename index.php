@@ -8,7 +8,7 @@ class Manage
 {
 public static function autoload($class)
   {
-    include $class . '.php;
+    include $class . '.php';
   }
 }  
 
@@ -50,4 +50,42 @@ class main
 }
 
 
+
+
+abstract class page
+{
+   protected $html;
+
+
+      public function__construct()
+      {
+        $this->html .= '<html>';
+	$this->html .= '<link rel="stylesheet" href="styles.css">';
+	$this->html .= '<body>';
+      }
+
+
+
+
+      public function__destruct()
+      {
+	$this->html .= '</body</html>>';
+	stringFunctions::printThis($this->html);
+      }
+
+
+
+      public function get()
+      {
+	echo 'Default get message';
+      }
+
+
+
+
+      public function post()
+      {
+	print_r($_POST);
+      }
+}
 ?>
