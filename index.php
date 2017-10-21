@@ -16,8 +16,38 @@ public static function autoload($class)
 
 spl_autoload_register(array('Manage', 'autoload'));
 
-   
-    
+
+$obj = new main();
+
+
+
+
+class main
+{
+    public function__constrct()
+      {
+        $pageRequest = 'homepage';
+
+
+	  if (isset($_REQUEST['page']))
+	    {
+		$pageRequest = $_REQUEST['page'];
+	    }
+
+
+	     $page = new $pageRequest;
+
+
+	        if ($_SERVER['REQUEST_METHOD'] == 'GET')
+		  {
+			$page->get();
+		  }
+		else
+		  {
+			page->post();
+		  }
+      }
+}
 
 
 ?>
