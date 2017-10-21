@@ -12,4 +12,12 @@ public static function autoload($class)
   }
 }  
 
+
+
+spl_autoload_register(array('Manage', 'autoload'));
+
+   
+    
+
+
 ?>
