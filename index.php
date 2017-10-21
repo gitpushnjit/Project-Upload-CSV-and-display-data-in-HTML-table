@@ -88,4 +88,52 @@ abstract class page
 	print_r($_POST);
       }
 }
+
+
+
+
+
+class homepage extends page
+{
+  public function get()
+  {
+    $form = '<form method="post" enctype="multipart/form-data">';
+    $form .= '<input type="file" name="fileToUpload" id="fileToUpload">';
+    $form .= '<input type="submit" value="Upload" name="submit">';
+    $form .= '</form>';
+    
+    $this->html .='<h1>Form Upload</h1>';
+    $this->html .=$form;
+  }
+
+
+
+  public function post()
+  {
+    $name = $_FILES['fileToUpload']['name'];
+    $temp_name = $_FILES['fileToUpload']['tmp_name'];
+
+      
+      if(isset($name))
+      {
+	$location = '/afs/cad.njit.edu/u/p/g/pg395/public_html/Project1/Upload';
+	$upload_file_path = $location . $name;
+
+
+
+	$table = new htmlTable();
+
+
+	   if(move_uploaded_file($temp_name, $upload_file_path))
+	   {
+	     $table->print_table($upload_file_path);
+	   }
+
+	   else
+	   {
+	     echo 'Please select a file to be uploaded.';
+	   }
+      }
+  }
+}
 ?>
